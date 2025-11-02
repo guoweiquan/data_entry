@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const enrollmentController_1 = require("../controllers/enrollmentController");
+const enrollmentValidator_1 = require("../validators/enrollmentValidator");
+const validationMiddleware_1 = require("../middlewares/validationMiddleware");
+const enrollmentRouter = (0, express_1.Router)();
+enrollmentRouter.get("/", enrollmentValidator_1.listQueryValidator, validationMiddleware_1.validationMiddleware, enrollmentController_1.listEnrollmentsHandler);
+enrollmentRouter.get("/export", enrollmentValidator_1.exportQueryValidator, validationMiddleware_1.validationMiddleware, enrollmentController_1.exportEnrollmentsHandler);
+enrollmentRouter.get("/:id", enrollmentValidator_1.idParamValidator, validationMiddleware_1.validationMiddleware, enrollmentController_1.getEnrollmentHandler);
+enrollmentRouter.post("/", enrollmentValidator_1.createEnrollmentValidator, validationMiddleware_1.validationMiddleware, enrollmentController_1.createEnrollmentHandler);
+enrollmentRouter.put("/:id", enrollmentValidator_1.updateEnrollmentValidator, validationMiddleware_1.validationMiddleware, enrollmentController_1.updateEnrollmentHandler);
+enrollmentRouter.delete("/:id", enrollmentValidator_1.idParamValidator, validationMiddleware_1.validationMiddleware, enrollmentController_1.deleteEnrollmentHandler);
+exports.default = enrollmentRouter;

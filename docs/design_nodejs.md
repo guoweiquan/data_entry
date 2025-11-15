@@ -50,12 +50,12 @@ flowchart LR
 ### 2.1 技术建议
 - **前端**：Vue3
 - **UI 组件库**：Ant Design（React/Vue）、Element Plus（Vue）、MUI 等，方便快速搭建表单与表格。
-- **后端**：Java（Spring Boot 等）。
+- **后端**：Node.js（Express / NestJS）。
 - **数据库**：SQLite。
 - **导出功能**：
-  - Excel：Java 可使用 Apache POI，Python 可用 `pandas`。
-  - CSV：Java 原生或第三方库均易实现。
-- **部署**：前端静态资源部署（如 Vercel、Netlify、Nginx），后端部署到云主机或 Serverless 平台，可使用 Spring Boot 内嵌容器或 Servlet 容器部署。数据库托管在云数据库。
+  - Excel：Node.js 可用 `exceljs`，Python 可用 `pandas`。
+  - CSV：语言原生或第三方库均易实现。
+- **部署**：前端静态资源部署（如 Vercel、Netlify、Nginx），后端部署到云主机或 Serverless 平台。数据库托管在云数据库。
 
 ---
 
@@ -140,7 +140,7 @@ CREATE INDEX idx_enrollments_course ON enrollments (course);
 ### 5.2 导出功能实现建议
 - **后端**：
   - 采用 Excel/CSV 库，将查询结果写入临时文件或直接输出二进制流。
-  - Excel 推荐 Apache POI（Java）或 `pandas`（Python）。
+  - Excel 推荐 `exceljs`（Node.js）或 `pandas`（Python）。
 - **前端**：
   - 发起请求后处理文件流，触发浏览器下载。
   - 提供导出状态提示（Loading、成功/失败提示）。
